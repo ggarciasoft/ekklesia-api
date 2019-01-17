@@ -11,7 +11,7 @@ namespace Ekklesia.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<UserTenant> builder)
         {
-            builder.ToTable("UsersTenants");
+            builder.ToTable("UsersTenants", "Security");
 
             builder.HasKey(o => new { o.TenantId, o.UserId });
         }

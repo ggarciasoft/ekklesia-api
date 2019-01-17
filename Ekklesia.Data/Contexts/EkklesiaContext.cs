@@ -21,8 +21,10 @@ namespace Ekklesia.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new TenantMapping());
+            modelBuilder.ApplyConfiguration(new RoleMapping());
             modelBuilder.ApplyConfiguration(new UserMapping());
             modelBuilder.ApplyConfiguration(new UserTenantMapping());
+
         }
     }
 }
