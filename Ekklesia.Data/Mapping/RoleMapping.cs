@@ -18,8 +18,10 @@ namespace Ekklesia.Data.Mapping
             builder.Property(o => o.Id).ValueGeneratedOnAdd();
             builder.Property(o => o.Name).HasMaxLength(20).IsRequired();
             builder.Property(o => o.Alias).HasMaxLength(20).IsRequired();
+            builder.Property(o => o.Description).HasMaxLength(100);
             builder.Property(o => o.InsertUserId).IsRequired();
             builder.Property(o => o.InsertDate).IsRequired();
+            builder.Property(o => o.IsActive).IsRequired();
             builder.Property(o => o.UpdateUserId);
             builder.Property(o => o.UpdateDate);
             builder.Property(o => o.TenantId);

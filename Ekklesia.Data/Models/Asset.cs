@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ekklesia.Data.Models
 {
-    public class Role
+    public class Asset
     {
         public int Id { get; set; }
         public string Alias { get; set; }
