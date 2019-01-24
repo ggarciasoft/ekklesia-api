@@ -18,8 +18,8 @@ namespace Ekklesia.Data.Models
         public DateTime? ConversionDate { get; set; }
         public DateTime? BaptismDate { get; set; }
         public byte[] ContactImage { get; set; }
-        public int TenantId { get; set; }
         public bool IsActive { get; set; }
+        public int TenantId { get; set; }
         public int InsertUserId { get; set; }
         public DateTime InsertDate { get; set; }
         public int? UpdateUserId { get; set; }

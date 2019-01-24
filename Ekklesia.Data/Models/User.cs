@@ -15,11 +15,11 @@ namespace Ekklesia.Data.Models
         public byte[] UserImage { get; set; }
         public bool Active { get; set; }
         public bool MustChangePassword { get; set; }
+        public int RoleId { get; set; }
         public int InsertUserId { get; set; }
         public DateTime InsertDate { get; set; }
         public int? UpdateUserId { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public int RoleId { get; set; }
         public virtual Role Role { get; set; }
         public virtual ICollection<UserTenant> Tenants { get; set; }
     }
