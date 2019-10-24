@@ -25,17 +25,6 @@ namespace Ekklesia.Data.Mapping
             builder.Property(o => o.UpdateUserId);
             builder.Property(o => o.UpdateDate);
             builder.Property(o => o.TenantId);
-
-            #region Initial data
-            builder.HasData(new Role()
-            {
-                Id = 1,
-                Alias = "Admin",
-                Name = "Administrador",
-                InsertUserId = 1,
-                InsertDate = new DateTime(2019, 1, 10)
-            });
-            #endregion
         }
     }
 }

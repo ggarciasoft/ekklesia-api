@@ -10,7 +10,7 @@ namespace Ekklesia.Data.Models
         public DateTime MovementDate { get; set; }
         public string Comments { get; set; }
         public int? ActivityId { get; set; }
-        public int? TenantId { get; set; }
+        public int TenantId { get; set; }
         public int InsertUserId { get; set; }
         public DateTime InsertDate { get; set; }
         public int? UpdateUserId { get; set; }

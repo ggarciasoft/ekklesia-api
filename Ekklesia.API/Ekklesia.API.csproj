@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>aspnet-Ekklesia.API-01A4D7A1-A63F-4371-890A-F6A702BA5346</UserSecretsId>
   </PropertyGroup>
 

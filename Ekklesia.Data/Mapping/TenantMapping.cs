@@ -20,15 +20,6 @@ namespace Ekklesia.Data.Mapping
             builder.Property(o => o.Description).HasMaxLength(100);
 
             builder.HasMany(o => o.Users).WithOne(o => o.Tenant).HasForeignKey(o => o.TenantId).OnDelete(DeleteBehavior.Restrict);
-
-            #region Initial data
-            builder.HasData(new Tenant()
-            {
-                Id = 1,
-                Name = "El Buen Pastor",
-                Description = "El Buen Pastor"
-            });
-            #endregion
         }
     }
 }

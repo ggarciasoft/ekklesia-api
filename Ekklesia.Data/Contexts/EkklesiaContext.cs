@@ -3,6 +3,8 @@ using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Ekklesia.Data.Contexts
@@ -20,11 +22,16 @@ namespace Ekklesia.Data.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new TenantMapping());
-            modelBuilder.ApplyConfiguration(new RoleMapping());
-            modelBuilder.ApplyConfiguration(new UserMapping());
-            modelBuilder.ApplyConfiguration(new UserTenantMapping());
 
+            /*var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+                                 .Where(t => t.GetInterfaces().Any(gi => gi.IsGenericType && gi.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>))).ToList();
+
+            foreach (var type in typesToRegister)
+            {
+                dynamic configurationInstance = Activator.CreateInstance(type);
+                modelBuilder.ApplyConfiguration(configurationInstance);
+            }
+            */
         }
     }
 }
