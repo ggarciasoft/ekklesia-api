@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Ekklesia.Data.Mapping
 {
-    internal class RoleMapping : IEntityTypeConfiguration<Role>
+    internal class ActivityTypeMapping : IEntityTypeConfiguration<ActivityType>
     {
-        public void Configure(EntityTypeBuilder<Role> builder)
+        public void Configure(EntityTypeBuilder<ActivityType> builder)
         {
-            builder.ToTable("Role", "Security");
+            builder.ToTable("ActivityType", "Configuration");
 
             builder.Property(o => o.Name).HasMaxLength(20).IsRequired();
             builder.Property(o => o.Alias).HasMaxLength(20).IsRequired();

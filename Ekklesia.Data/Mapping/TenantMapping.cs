@@ -13,9 +13,6 @@ namespace Ekklesia.Data.Mapping
         {
             builder.ToTable("Tenant", "Security");
 
-            builder.HasKey(o => o.Id);
-
-            builder.Property(o => o.Id).ValueGeneratedOnAdd();
             builder.Property(o => o.Name).HasMaxLength(20).IsRequired();
             builder.Property(o => o.Description).HasMaxLength(100);
         }

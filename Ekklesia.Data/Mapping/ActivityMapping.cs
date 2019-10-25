@@ -13,16 +13,7 @@ namespace Ekklesia.Data.Mapping
         {
             builder.ToTable("Activity");
 
-            builder.HasKey(o => o.Id);
-
-            builder.Property(o => o.Id).ValueGeneratedOnAdd();
-            builder.Property(o => o.ActivityDate).IsRequired();
-            builder.Property(o => o.ActivityTypeId).IsRequired();
             builder.Property(o => o.Comments).HasMaxLength(255).IsRequired();
-            builder.Property(o => o.InsertUserId).IsRequired();
-            builder.Property(o => o.InsertDate).IsRequired();
-            builder.Property(o => o.UpdateUserId);
-            builder.Property(o => o.UpdateDate);
         }
     }
 }
