@@ -16,5 +16,6 @@ namespace Ekklesia.Data.Models
         public DateTime InsertDate { get; set; }
         public int? UpdateUserId { get; set; }
         public DateTime? UpdateDate { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

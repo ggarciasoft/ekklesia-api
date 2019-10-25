@@ -11,7 +11,7 @@ namespace Ekklesia.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Users", "Security");
+            builder.ToTable("User", "Security");
 
             builder.HasKey(o => o.Id);
 
@@ -28,9 +28,6 @@ namespace Ekklesia.Data.Mapping
             builder.Property(o => o.InsertDate).IsRequired();
             builder.Property(o => o.UpdateUserId);
             builder.Property(o => o.UpdateDate);
-
-            builder.HasMany(o => o.Tenants).WithOne(o => o.User).HasForeignKey(o => o.UserId).OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(o => o.Role).WithMany(o => o.Users).HasForeignKey(o => o.RoleId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

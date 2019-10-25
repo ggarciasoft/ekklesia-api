@@ -23,7 +23,7 @@ namespace Ekklesia.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-            /*var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
                                  .Where(t => t.GetInterfaces().Any(gi => gi.IsGenericType && gi.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>))).ToList();
 
             foreach (var type in typesToRegister)
@@ -31,7 +31,7 @@ namespace Ekklesia.Data.Contexts
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.ApplyConfiguration(configurationInstance);
             }
-            */
+            
         }
     }
 }
