@@ -27,7 +27,8 @@ namespace Ekklesia.Data.Contexts
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.ApplyConfiguration(configurationInstance);
             }
-            
+
+            modelBuilder.Seed();
         }
     }
 }
