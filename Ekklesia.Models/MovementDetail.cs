@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ekklesia.Data.Models
+namespace Ekklesia.Models
 {
     public class MovementDetail
     {

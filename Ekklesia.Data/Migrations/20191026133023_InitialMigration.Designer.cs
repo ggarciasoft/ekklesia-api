@@ -21,7 +21,7 @@ namespace Ekklesia.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Activity", b =>
+            modelBuilder.Entity("Ekklesia.Models.Activity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Activity");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.ActivityAssistant", b =>
+            modelBuilder.Entity("Ekklesia.Models.ActivityAssistant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("ActivityAssistant");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.ActivityType", b =>
+            modelBuilder.Entity("Ekklesia.Models.ActivityType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,7 +113,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("ActivityType","Configuration");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Asset", b =>
+            modelBuilder.Entity("Ekklesia.Models.Asset", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +147,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Asset","Configuration");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Contact", b =>
+            modelBuilder.Entity("Ekklesia.Models.Contact", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,7 +202,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Contact");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.EntityType", b =>
+            modelBuilder.Entity("Ekklesia.Models.EntityType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -234,7 +234,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("EntityType","Configuration");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.MemberMinistryPosition", b =>
+            modelBuilder.Entity("Ekklesia.Models.MemberMinistryPosition", b =>
                 {
                     b.Property<int>("MemberId");
 
@@ -251,7 +251,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("MemberMinistryPosition");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Ministry", b =>
+            modelBuilder.Entity("Ekklesia.Models.Ministry", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -285,7 +285,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Ministry","Configuration");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Movement", b =>
+            modelBuilder.Entity("Ekklesia.Models.Movement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -316,7 +316,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Movement");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.MovementDetail", b =>
+            modelBuilder.Entity("Ekklesia.Models.MovementDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -349,7 +349,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("MovementDetail");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.MovementType", b =>
+            modelBuilder.Entity("Ekklesia.Models.MovementType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -381,7 +381,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("MovementType","Configuration");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Position", b =>
+            modelBuilder.Entity("Ekklesia.Models.Position", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -415,7 +415,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Position","Configuration");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Role", b =>
+            modelBuilder.Entity("Ekklesia.Models.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -449,7 +449,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Role","Security");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Tenant", b =>
+            modelBuilder.Entity("Ekklesia.Models.Tenant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -467,7 +467,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("Tenant","Security");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.User", b =>
+            modelBuilder.Entity("Ekklesia.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -516,7 +516,7 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("User","Security");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.UserTenant", b =>
+            modelBuilder.Entity("Ekklesia.Models.UserTenant", b =>
                 {
                     b.Property<int>("TenantId");
 
@@ -529,94 +529,94 @@ namespace Ekklesia.Data.Migrations
                     b.ToTable("UserTenant","Security");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Activity", b =>
+            modelBuilder.Entity("Ekklesia.Models.Activity", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.ActivityType", "ActivityType")
+                    b.HasOne("Ekklesia.Models.ActivityType", "ActivityType")
                         .WithMany("Activities")
                         .HasForeignKey("ActivityTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.ActivityAssistant", b =>
+            modelBuilder.Entity("Ekklesia.Models.ActivityAssistant", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.Activity", "Activity")
+                    b.HasOne("Ekklesia.Models.Activity", "Activity")
                         .WithMany("Assistants")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ekklesia.Data.Models.Contact", "Contact")
+                    b.HasOne("Ekklesia.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId");
 
-                    b.HasOne("Ekklesia.Data.Models.EntityType", "EntityType")
+                    b.HasOne("Ekklesia.Models.EntityType", "EntityType")
                         .WithMany()
                         .HasForeignKey("EntityTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.MemberMinistryPosition", b =>
+            modelBuilder.Entity("Ekklesia.Models.MemberMinistryPosition", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.Contact", "Member")
+                    b.HasOne("Ekklesia.Models.Contact", "Member")
                         .WithMany("MinistriesPositions")
                         .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ekklesia.Data.Models.Ministry", "Ministry")
+                    b.HasOne("Ekklesia.Models.Ministry", "Ministry")
                         .WithMany()
                         .HasForeignKey("MinistryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ekklesia.Data.Models.Position", "Position")
+                    b.HasOne("Ekklesia.Models.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.Movement", b =>
+            modelBuilder.Entity("Ekklesia.Models.Movement", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.Activity", "Activity")
+                    b.HasOne("Ekklesia.Models.Activity", "Activity")
                         .WithMany()
                         .HasForeignKey("ActivityId");
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.MovementDetail", b =>
+            modelBuilder.Entity("Ekklesia.Models.MovementDetail", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.Asset", "Asset")
+                    b.HasOne("Ekklesia.Models.Asset", "Asset")
                         .WithMany()
                         .HasForeignKey("AssetId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ekklesia.Data.Models.Contact", "Contact")
+                    b.HasOne("Ekklesia.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId");
 
-                    b.HasOne("Ekklesia.Data.Models.Movement", "Movement")
+                    b.HasOne("Ekklesia.Models.Movement", "Movement")
                         .WithMany()
                         .HasForeignKey("MovementId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ekklesia.Data.Models.MovementType", "MovementType")
+                    b.HasOne("Ekklesia.Models.MovementType", "MovementType")
                         .WithMany()
                         .HasForeignKey("MovementTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.User", b =>
+            modelBuilder.Entity("Ekklesia.Models.User", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.Role", "Role")
+                    b.HasOne("Ekklesia.Models.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ekklesia.Data.Models.UserTenant", b =>
+            modelBuilder.Entity("Ekklesia.Models.UserTenant", b =>
                 {
-                    b.HasOne("Ekklesia.Data.Models.Tenant", "Tenant")
+                    b.HasOne("Ekklesia.Models.Tenant", "Tenant")
                         .WithMany("Users")
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Ekklesia.Data.Models.User", "User")
+                    b.HasOne("Ekklesia.Models.User", "User")
                         .WithMany("Tenants")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

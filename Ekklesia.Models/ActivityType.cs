@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ekklesia.Data.Models
+namespace Ekklesia.Models
 {
-    public class Role
+    public class ActivityType
     {
         public int Id { get; set; }
         public string Alias { get; set; }
@@ -16,6 +16,6 @@ namespace Ekklesia.Data.Models
         public DateTime InsertDate { get; set; }
         public int? UpdateUserId { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

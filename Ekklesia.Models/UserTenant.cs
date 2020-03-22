@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Ekklesia.Data.Models
+namespace Ekklesia.Models
 {
     public class UserTenant
     {

@@ -1,4 +1,4 @@
-﻿using Ekklesia.Data.Models;
+﻿using Ekklesia.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

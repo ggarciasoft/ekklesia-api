@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace Ekklesia.Data.Models
+namespace Ekklesia.Models
 {
     public class Tenant
     {
