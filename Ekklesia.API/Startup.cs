@@ -35,7 +35,7 @@ namespace Ekklesia.API
             });
             //MvcOptions.EnableEndpointRouting = false
             services.AddEkklesiaContext(Configuration.GetConnectionString("EkklesiaContext"));
-            //services.AddAuthentication(o => o.);
+            //services.AddAuthentication(o => o.);6
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

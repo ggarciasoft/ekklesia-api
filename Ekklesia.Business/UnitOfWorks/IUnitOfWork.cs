@@ -1,9 +1,9 @@
-﻿using Ekklesia.Domain.Repositories;
+﻿using Ekklesia.Business.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ekklesia.Domain.UnitOfWorks
+namespace Ekklesia.Business.UnitOfWorks
 {
     public interface IUnitOfWork : IDisposable
     {
