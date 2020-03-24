@@ -1,4 +1,5 @@
 ﻿using Ekklesia.Business.Repositories;
+using Ekklesia.Infrastructure.Interfaces.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ekklesia.DI

@@ -1,4 +1,5 @@
 ﻿using Ekklesia.Business.Services;
+using Ekklesia.Infrastructure.Interfaces.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

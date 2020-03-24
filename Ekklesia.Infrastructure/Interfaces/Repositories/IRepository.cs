@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Ekklesia.Business.Repositories
+namespace Ekklesia.Infrastructure.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class
     {

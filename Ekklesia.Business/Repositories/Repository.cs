@@ -1,4 +1,5 @@
 ﻿using Ekklesia.Data.Contexts;
+using Ekklesia.Infrastructure.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -15,17 +15,15 @@ namespace Ekklesia.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        EkklesiaContext _db;
-        public ValuesController(EkklesiaContext db)
+        public ValuesController()
         {
-            _db = db;
         }
 
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return Ok(_db.Set<ActivityType>().Select(o => o.Name));
+            return Ok();
         }
 
         // GET api/values/5

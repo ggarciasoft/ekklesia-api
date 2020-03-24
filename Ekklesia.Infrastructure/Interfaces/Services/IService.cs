@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Ekklesia.Business.Services
+namespace Ekklesia.Infrastructure.Interfaces.Services
 {
     public interface IService<T> where T : class
     {

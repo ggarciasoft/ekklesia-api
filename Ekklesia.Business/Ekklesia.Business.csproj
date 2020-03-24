@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ekklesia.Data\Ekklesia.Data.csproj" />
+    <ProjectReference Include="..\Ekklesia.Infrastructure\Ekklesia.Infrastructure.csproj" />
+    <ProjectReference Include="..\Ekklesia.Models\Ekklesia.Models.csproj" />
   </ItemGroup>
 
 </Project>
