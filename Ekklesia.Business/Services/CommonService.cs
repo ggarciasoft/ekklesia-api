@@ -1,4 +1,6 @@
-﻿using Ekklesia.Infrastructure.Interfaces.Services;
+﻿using Ekklesia.Infrastructure.Interfaces.Repositories;
+using Ekklesia.Infrastructure.Interfaces.Services;
+using Ekklesia.Infrastructure.Interfaces.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,29 +9,41 @@ namespace Ekklesia.Business.Services
 {
     public class CommonService<T> : IService<T> where T : class
     {
-        public void Delete(object id)
+        private IUnitOfWork _unitOfWork;
+        private IRepository<T> _repository;
+        public CommonService(IUnitOfWork unitOfWork)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+            _repository = _unitOfWork.GetRepository<T>();
         }
 
-        public void Delete(T entityToDelete)
+        public void Delete(object id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id);
+            _unitOfWork.Save();
+        }
+
+        public void Delete(T entity)
+        {
+            _repository.Delete(entity);
+            _unitOfWork.Save();
         }
 
         public T GetByID(object id)
         {
-            throw new NotImplementedException();
+            return _repository.GetByID(id);
         }
 
         public void Insert(T entity)
         {
-            throw new NotImplementedException();
+            _repository.Insert(entity);
+            _unitOfWork.Save();
         }
 
-        public void Update(T entityToUpdate)
+        public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _repository.Update(entity);
+            _unitOfWork.Save();
         }
     }
 }

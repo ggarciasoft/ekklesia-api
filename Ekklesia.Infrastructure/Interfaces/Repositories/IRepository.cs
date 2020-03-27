@@ -18,8 +18,8 @@ namespace Ekklesia.Infrastructure.Interfaces.Repositories
 
         void Delete(object id);
 
-        void Delete(T entityToDelete);
+        void Delete(T entity);
 
-        void Update(T entityToUpdate);
+        void Update(T entity);
     }
 }

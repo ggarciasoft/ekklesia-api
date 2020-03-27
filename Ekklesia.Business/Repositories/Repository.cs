@@ -65,19 +65,19 @@ namespace Ekklesia.Business.Repositories
             Delete(entityToDelete);
         }
 
-        public virtual void Delete(TEntity entityToDelete)
+        public virtual void Delete(TEntity entity)
         {
-            if (_context.Entry(entityToDelete).State == EntityState.Detached)
+            if (_context.Entry(entity).State == EntityState.Detached)
             {
-                _dbSet.Attach(entityToDelete);
+                _dbSet.Attach(entity);
             }
-            _dbSet.Remove(entityToDelete);
+            _dbSet.Remove(entity);
         }
 
-        public virtual void Update(TEntity entityToUpdate)
+        public virtual void Update(TEntity entity)
         {
-            _dbSet.Attach(entityToUpdate);
-            _context.Entry(entityToUpdate).State = EntityState.Modified;
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
     }
