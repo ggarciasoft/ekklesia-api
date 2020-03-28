@@ -6,9 +6,9 @@ namespace Ekklesia.DI
 {
     public static class RepositoriesConfiguration
     {
-        public static void AddRepositories(this IServiceCollection services)
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            return services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }

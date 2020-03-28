@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ekklesia.Business.Services;
 using Ekklesia.Data.Contexts;
+using Ekklesia.Infrastructure.Interfaces.Services;
 using Ekklesia.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,14 +17,17 @@ namespace Ekklesia.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public ValuesController()
+        private IService<ActivityType> _commonService;
+        public ValuesController(IService<ActivityType> commonService)
         {
+            _commonService = commonService;
         }
 
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var one = _commonService.GetByID(1);
             return Ok();
         }
 

@@ -9,9 +9,9 @@ namespace Ekklesia.DI
 {
     public static class ServicesConfiguration
     {
-        public static void AddServices(this IServiceCollection services)
+        public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IService<>), typeof(CommonService<>));
+            return services.AddScoped(typeof(IService<>), typeof(CommonService<>));
         }
     }
 }

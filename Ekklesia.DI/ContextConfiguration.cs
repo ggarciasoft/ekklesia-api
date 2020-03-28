@@ -10,9 +10,9 @@ namespace Ekklesia.DI
 {
     public static class ContextConfiguration
     {
-        public static void AddEkklesiaContext(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddEkklesiaContext(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<EkklesiaContext>(o => o.UseSqlServer(connectionString));
+            return services.AddDbContext<EkklesiaContext>(o => o.UseSqlServer(connectionString));
         }
     }
 }
