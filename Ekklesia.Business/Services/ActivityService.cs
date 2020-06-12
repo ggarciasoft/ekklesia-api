@@ -4,6 +4,7 @@ using Ekklesia.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ekklesia.Business.Services
 {
@@ -13,29 +14,29 @@ namespace Ekklesia.Business.Services
         {
         }
 
-        public void Delete(object id)
+        public async Task DeleteAsync(object id)
         {
-            throw new NotImplementedException();
+           await base.DeleteAsync(id);
         }
 
-        public void Delete(Activity entity)
+        public async Task DeleteAsync(Activity entity)
         {
-            throw new NotImplementedException();
+           await base.DeleteAsync(entity);
         }
 
-        public Activity GetByID(object id)
+        public async Task<Activity> GetByIDAsync(object id)
         {
-            throw new NotImplementedException();
+           return await base.GetByIDAsync(id);
         }
 
-        public void Insert(Activity entity)
+        public async Task InsertAsync(Activity entity)
         {
-            throw new NotImplementedException();
+           await base.InsertAsync(entity);
         }
 
-        public void Update(Activity entity)
+        public async Task UpdateAsync(Activity entity)
         {
-            throw new NotImplementedException();
+           await base.InsertAsync(entity);
         }
     }
 }

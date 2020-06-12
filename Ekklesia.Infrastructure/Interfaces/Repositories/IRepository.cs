@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Ekklesia.Infrastructure.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> Get(
+        Task<IEnumerable<T>> GetAsync(
               Expression<Func<T, bool>> filter = null,
               Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
               string includeProperties = "");
 
-        T GetByID(object id);
+        Task<T> GetByIDAsync(object id);
 
-        void Insert(T entity);
+        Task InsertAsync(T entity);
 
-        void Delete(object id);
+        Task DeleteAsync(object id);
 
-        void Delete(T entity);
+        Task DeleteAsync(T entity);
 
-        void Update(T entity);
+        Task UpdateAsync(T entity);
     }
 }

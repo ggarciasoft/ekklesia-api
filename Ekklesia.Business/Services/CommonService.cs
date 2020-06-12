@@ -4,6 +4,7 @@ using Ekklesia.Infrastructure.Interfaces.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ekklesia.Business.Services
 {
@@ -17,33 +18,33 @@ namespace Ekklesia.Business.Services
             _repository = _unitOfWork.GetRepository<T>();
         }
 
-        public void Delete(object id)
+        public async Task DeleteAsync(object id)
         {
-            _repository.Delete(id);
-            _unitOfWork.Save();
+            await _repository.DeleteAsync(id);
+            await _unitOfWork.SaveAsync();
         }
 
-        public void Delete(T entity)
+        public async Task DeleteAsync(T entity)
         {
-            _repository.Delete(entity);
-            _unitOfWork.Save();
+            await _repository.DeleteAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
 
-        public T GetByID(object id)
+        public async Task<T> GetByIDAsync(object id)
         {
-            return _repository.GetByID(id);
+            return await _repository.GetByIDAsync(id);
         }
 
-        public void Insert(T entity)
+        public async Task InsertAsync(T entity)
         {
-            _repository.Insert(entity);
-            _unitOfWork.Save();
+            await _repository.InsertAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
 
-        public void Update(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            _repository.Update(entity);
-            _unitOfWork.Save();
+            await _repository.UpdateAsync(entity);
+            await _unitOfWork.SaveAsync();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ekklesia.Business.Repositories
 {
@@ -20,7 +21,7 @@ namespace Ekklesia.Business.Repositories
             this._dbSet = context.Set<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> Get(
+        public async virtual Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
@@ -35,29 +36,28 @@ namespace Ekklesia.Business.Repositories
                 query = query.Include(includeProperty);
 
             if (orderBy != null)
-                return orderBy(query).ToList();
+                return await orderBy(query).ToListAsync();
             else
-                return query.ToList();
+                return await query.ToListAsync();
         }
 
-        public virtual TEntity GetByID(object id)
+        public async virtual Task<TEntity> GetByIDAsync(object id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id);
         }
 
-        public virtual void Insert(TEntity entity)
+        public async virtual Task InsertAsync(TEntity entity)
         {
-            _dbSet.Add(entity);
-
+            await _dbSet.AddAsync(entity);
         }
 
-        public virtual void Delete(object id)
+        public async virtual Task DeleteAsync(object id)
         {
-            TEntity entityToDelete = _dbSet.Find(id);
-            Delete(entityToDelete);
+            TEntity entityToDelete = await _dbSet.FindAsync(id);
+            await DeleteAsync(entityToDelete);
         }
 
-        public virtual void Delete(TEntity entity)
+        public async virtual Task DeleteAsync(TEntity entity)
         {
             if (_context.Entry(entity).State == EntityState.Detached)
             {
@@ -66,12 +66,10 @@ namespace Ekklesia.Business.Repositories
             _dbSet.Remove(entity);
         }
 
-        public virtual void Update(TEntity entity)
+        public async virtual Task UpdateAsync(TEntity entity)
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
-
     }
-
 }

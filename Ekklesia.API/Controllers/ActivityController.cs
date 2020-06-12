@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ekklesia.Business.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +10,12 @@ namespace Ekklesia.API.Controllers
 {
     public class ActivityController : Controller
     {
-        
-        public ActivityController()
+        private readonly ActivityService _service;
+        public ActivityController(ActivityService service)
         {
-
+            _service = service;
         }
+
         // GET: Activity
         public ActionResult Index()
         {

@@ -5,6 +5,7 @@ using Ekklesia.Infrastructure.Interfaces.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ekklesia.Business.UnitOfWorks
 {
@@ -18,14 +19,14 @@ namespace Ekklesia.Business.UnitOfWorks
             _serviceProvider = serviceProvider;
         }
 
-
-        public void Dispose(bool disposing)
+        public async ValueTask DisposeAsync(bool disposing)
         {
+            await DisposeAsync();
         }
 
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
-            _context.Dispose();
+            await _context.DisposeAsync();
         }
 
         public IRepository<T> GetRepository<T>() where T : class
@@ -33,9 +34,9 @@ namespace Ekklesia.Business.UnitOfWorks
             return (IRepository<T>)_serviceProvider.GetService(typeof(IRepository<T>));
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-           _context.SaveChanges();
+           await _context.SaveChangesAsync();
             return true;
         }
     }

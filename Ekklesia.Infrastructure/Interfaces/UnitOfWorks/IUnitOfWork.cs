@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ekklesia.Infrastructure.Interfaces.UnitOfWorks
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IAsyncDisposable
     {
         IRepository<T> GetRepository<T>() where T : class;
 
-        bool Save();
+        Task<bool> SaveAsync();
 
-        void Dispose(bool disposing);
+        ValueTask DisposeAsync(bool disposing);
     }
 }
