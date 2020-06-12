@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Ekklesia.DI;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace Ekklesia.API
 {
@@ -29,19 +31,18 @@ namespace Ekklesia.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                //.AddControllersAsServices()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddMvcOptions(o =>
-                {
-                    o.EnableEndpointRouting = false;
-                });
-            //MvcOptions.EnableEndpointRouting = false
+            services
+                .AddMvc()
+                .AddControllersAsServices()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddMvcOptions(o => o.EnableEndpointRouting = false);
+
             services
                 .AddEkklesiaContext(Configuration.GetConnectionString("EkklesiaContext"))
                 .AddRepositories()
                 .AddUnitOfWorks()
                 .AddServices();
-            //services.AddAuthentication(o => o.);6
+            //services.AddAuthentication(o => o.);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

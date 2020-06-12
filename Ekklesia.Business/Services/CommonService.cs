@@ -9,8 +9,8 @@ namespace Ekklesia.Business.Services
 {
     public class CommonService<T> : IService<T> where T : class
     {
-        private IUnitOfWork _unitOfWork;
-        private IRepository<T> _repository;
+        protected IUnitOfWork _unitOfWork;
+        protected IRepository<T> _repository;
         public CommonService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
