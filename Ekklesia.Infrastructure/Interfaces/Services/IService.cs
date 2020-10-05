@@ -8,6 +8,8 @@ namespace Ekklesia.Infrastructure.Interfaces.Services
 {
     public interface IService<T> where T : class
     {
+        Task<IEnumerable<T>> GetAllAsync();
+
         Task<T> GetByIDAsync(object id);
 
         Task InsertAsync(T entity);

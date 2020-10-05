@@ -13,30 +13,5 @@ namespace Ekklesia.Business.Services
         public ActivityService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
-
-        public async Task DeleteAsync(object id)
-        {
-           await base.DeleteAsync(id);
-        }
-
-        public async Task DeleteAsync(Activity entity)
-        {
-           await base.DeleteAsync(entity);
-        }
-
-        public async Task<Activity> GetByIDAsync(object id)
-        {
-           return await base.GetByIDAsync(id);
-        }
-
-        public async Task InsertAsync(Activity entity)
-        {
-           await base.InsertAsync(entity);
-        }
-
-        public async Task UpdateAsync(Activity entity)
-        {
-           await base.InsertAsync(entity);
-        }
     }
 }

@@ -12,6 +12,7 @@ namespace Ekklesia.Business.Services
     {
         protected IUnitOfWork _unitOfWork;
         protected IRepository<T> _repository;
+
         public CommonService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -28,6 +29,11 @@ namespace Ekklesia.Business.Services
         {
             await _repository.DeleteAsync(entity);
             await _unitOfWork.SaveAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _repository.GetAsync();
         }
 
         public async Task<T> GetByIDAsync(object id)

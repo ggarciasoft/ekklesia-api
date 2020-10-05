@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekklesia.DI", "Ekklesia.DI\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekklesia.Business", "Ekklesia.Business\Ekklesia.Business.csproj", "{6B205575-AF36-4E61-9B0D-957054EFB779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ekklesia.Models", "Ekklesia.Models\Ekklesia.Models.csproj", "{AF2BB849-EF1D-4B1C-8C8D-A217F888E005}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekklesia.Models", "Ekklesia.Models\Ekklesia.Models.csproj", "{AF2BB849-EF1D-4B1C-8C8D-A217F888E005}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ekklesia.Infrastructure", "Ekklesia.Infrastructure\Ekklesia.Infrastructure.csproj", "{EC52F05E-0F1E-4B13-91D1-B6D74D353BE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ekklesia.Infrastructure", "Ekklesia.Infrastructure\Ekklesia.Infrastructure.csproj", "{EC52F05E-0F1E-4B13-91D1-B6D74D353BE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ekklesia.DTO", "Ekklesia.DTO\Ekklesia.DTO.csproj", "{201CCF87-12EA-45FA-AC83-A7C31E5B998F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{EC52F05E-0F1E-4B13-91D1-B6D74D353BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC52F05E-0F1E-4B13-91D1-B6D74D353BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC52F05E-0F1E-4B13-91D1-B6D74D353BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201CCF87-12EA-45FA-AC83-A7C31E5B998F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201CCF87-12EA-45FA-AC83-A7C31E5B998F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201CCF87-12EA-45FA-AC83-A7C31E5B998F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201CCF87-12EA-45FA-AC83-A7C31E5B998F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

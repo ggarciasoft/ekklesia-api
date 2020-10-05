@@ -2,99 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ekklesia.Business.Services;
+using Ekklesia.Infrastructure.Interfaces.Services;
+using Ekklesia.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ekklesia.API.Controllers
 {
-    public class ActivityController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ActivityController : ControllerBase
     {
-        private readonly ActivityService _service;
-        public ActivityController(ActivityService service)
+        private readonly IActivityService _activityService;
+
+        public ActivityController(IActivityService activityService)
         {
-            _service = service;
+            _activityService = activityService;
         }
 
-        // GET: Activity
-        public ActionResult Index()
+        // GET: api/Activity
+        [HttpGet]
+        public async Task<IEnumerable<Activity>> Get()
         {
-            return View();
+            return await _activityService.GetAllAsync();
         }
 
-        // GET: Activity/Details/5
-        public ActionResult Details(int id)
+        // GET: api/Activity/5
+        [HttpGet("{id}", Name = "Get")]
+        public async Task<Activity> Get(int id)
         {
-            return View();
+            return await _activityService.GetByIDAsync(id);
         }
 
-        // GET: Activity/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Activity/Create
+        // POST: api/Activity
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void Post([FromBody] string value)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            
         }
 
-        // GET: Activity/Edit/5
-        public ActionResult Edit(int id)
+        // PUT: api/Activity/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return View();
         }
 
-        // POST: Activity/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Activity/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Activity/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

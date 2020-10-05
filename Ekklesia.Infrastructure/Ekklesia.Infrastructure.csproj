@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ekklesia.DTO\Ekklesia.DTO.csproj" />
     <ProjectReference Include="..\Ekklesia.Models\Ekklesia.Models.csproj" />
   </ItemGroup>
 
