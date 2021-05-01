@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace Ekklesia.Infrastructure.Interfaces.Services
 {
-    public interface IService<T> where T : class
+    public interface IService<TDTO> where TDTO : class
     {
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<TDTO>> GetAllAsync();
 
-        Task<T> GetByIDAsync(object id);
+        Task<TDTO> GetByIDAsync(int id);
 
-        Task InsertAsync(T entity);
+        Task InsertAsync(TDTO entity);
 
-        Task DeleteAsync(object id);
+        Task DeleteAsync(int id);
 
-        Task DeleteAsync(T entity);
+        Task UpdateAsync(int id, TDTO entity);
+    }
 
-        Task UpdateAsync(T entity);
+    public interface IService<TDTO, TDbModel> : IService<TDTO> where TDTO : class where TDbModel : class
+    {
     }
 }

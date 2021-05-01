@@ -1,4 +1,5 @@
-﻿using Ekklesia.Infrastructure.Interfaces.Repositories;
+﻿using AutoMapper;
+using Ekklesia.Infrastructure.Interfaces.Repositories;
 using Ekklesia.Infrastructure.Interfaces.Services;
 using Ekklesia.Infrastructure.Interfaces.UnitOfWorks;
 using System;
@@ -8,49 +9,65 @@ using System.Threading.Tasks;
 
 namespace Ekklesia.Business.Services
 {
-    public class CommonService<T> : IService<T> where T : class
+    public class CommonService<TDTO, TDbModel> : IService<TDTO>, IService<TDTO, TDbModel> where TDTO : class where TDbModel : class
     {
         protected IUnitOfWork _unitOfWork;
-        protected IRepository<T> _repository;
+        protected IRepository<TDbModel> _repository;
+        protected IMapper _mapper;
 
-        public CommonService(IUnitOfWork unitOfWork)
+        public CommonService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
-            _repository = _unitOfWork.GetRepository<T>();
+            _repository = _unitOfWork.GetRepository<TDbModel>();
+            _mapper = mapper;
         }
 
-        public async Task DeleteAsync(object id)
+        public async Task DeleteAsync(int id)
         {
             await _repository.DeleteAsync(id);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task<IEnumerable<TDTO>> GetAllAsync()
         {
-            await _repository.DeleteAsync(entity);
+            return ConvertIEnumerableDbModelToDTO(await _repository.GetAsync());
+        }
+
+        public async Task<TDTO> GetByIDAsync(int id)
+        {
+            return ConvertDbModelToDTO(await _repository.GetByIDAsync(id));
+        }
+
+        public async Task InsertAsync(TDTO entity)
+        {
+            await _repository.InsertAsync(ConvertDTOToDbModel(entity));
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task UpdateAsync(int id, TDTO entity)
         {
-            return await _repository.GetAsync();
-        }
-
-        public async Task<T> GetByIDAsync(object id)
-        {
-            return await _repository.GetByIDAsync(id);
-        }
-
-        public async Task InsertAsync(T entity)
-        {
-            await _repository.InsertAsync(entity);
+            await _repository.UpdateAsync(ConvertDTOToDbModel(entity));
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        protected TDTO ConvertDbModelToDTO(TDbModel dbModel)
         {
-            await _repository.UpdateAsync(entity);
-            await _unitOfWork.SaveAsync();
+            return _mapper.Map<TDbModel, TDTO>(dbModel);
+        }
+
+        protected IEnumerable<TDTO> ConvertIEnumerableDbModelToDTO(IEnumerable<TDbModel> dbModel)
+        {
+            return _mapper.Map<IEnumerable<TDbModel>, IEnumerable<TDTO>>(dbModel);
+        }
+
+        protected TDbModel ConvertDTOToDbModel(TDTO dTO)
+        {
+            return _mapper.Map<TDTO, TDbModel>(dTO);
+        }
+
+        protected IEnumerable<TDbModel> ConvertIEnumerableDTOToDbModel(IEnumerable<TDTO> dTO)
+        {
+            return _mapper.Map<IEnumerable<TDTO>, IEnumerable<TDbModel>>(dTO);
         }
     }
 }

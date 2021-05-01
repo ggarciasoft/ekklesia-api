@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Ekklesia.DI;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using AutoMapper;
+using Ekklesia.Infrastructure;
 
 namespace Ekklesia.API
 {
@@ -36,6 +38,8 @@ namespace Ekklesia.API
                 .AddControllersAsServices()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddMvcOptions(o => o.EnableEndpointRouting = false);
+
+            services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
             services
                 .AddEkklesiaContext(Configuration.GetConnectionString("EkklesiaContext"))
