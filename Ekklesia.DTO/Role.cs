@@ -16,6 +16,5 @@ namespace Ekklesia.DTO
         public DateTime InsertDate { get; set; }
         public int? UpdateUserId { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public virtual ICollection<User> Users { get; set; }
     }
 }
